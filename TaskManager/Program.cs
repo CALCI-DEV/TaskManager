@@ -1,10 +1,20 @@
-﻿using System.ComponentModel.Design;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 
 namespace TaskManager
 {
     internal class Program
     {
+        static void printList(List<string> list)
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("task list:");
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine(i + 1 + "-" + list[i]);
+            }
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome");
@@ -15,6 +25,7 @@ namespace TaskManager
             while (true)
             {
                 option = Console.ReadLine();
+                Console.WriteLine("\n");
                 if (option.ToLower() == "start" || option.ToLower() == "continue")
                 {
                     Console.WriteLine("Enter 1 to Add a Task.");
@@ -34,21 +45,11 @@ namespace TaskManager
                 }
                 else if (option == "2")
                 {
-                    Console.WriteLine("\n");
-                    Console.WriteLine("task list:");
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        Console.WriteLine(i + 1 + "-" + list[i]);
-                    }
-
+                    printList(list);
                 }
                 else if (option == "3")
                 {
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        Console.WriteLine(i + 1 + "-" + list[i]);
-
-                    }
+                    printList(list);
                     Console.WriteLine("\n");
                     Console.WriteLine("Please Enter The Task You Want to Remove.");
                     int tasknumber = Convert.ToInt32(Console.ReadLine()) - 1;
@@ -57,10 +58,7 @@ namespace TaskManager
                 }
                 else if (option == "4")
                 {
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        Console.WriteLine(i + 1 + "-" + list[i]);
-                    }
+                    printList(list);
                     Console.WriteLine("\n");
                     Console.WriteLine("Please Enter The Task You Want to Edit.");
                     int tasknmber = Convert.ToInt32(Console.ReadLine()) - 1;
